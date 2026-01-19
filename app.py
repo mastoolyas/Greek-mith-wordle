@@ -82,19 +82,20 @@ def get_character_by_name(name, data):
 def get_hero_of_the_day(data, new_game=False):
     """
     Selects the hero of the day. If new_game is True, picks a new random one,
-    otherwise uses the date.
+    otherwise uses the date to select a deterministic hero.
     """
     if not data:
         return None, None
 
     if new_game:
-        # For "Play Again", just pick a random one
+        # For "Play Again", just pick a random one.
+        # This will be different each time "Play Again" is clicked in a session.
         hero = random.choice(data)
     else:
-        # Daily hero
+        # Daily hero selection is deterministic based on the day of the year.
         day_of_year = datetime.now().timetuple().tm_yday
-        random.seed(day_of_year)
-        hero = random.choice(data)
+        hero_index = day_of_year % len(data)
+        hero = data[hero_index]
 
     all_names = sorted([char["name"] for char in data])
     return hero, all_names
@@ -171,6 +172,45 @@ def get_color_for_comparison(guess_attr, correct_attr, partial_match_allowed=Fal
         return PASTEL_YELLOW
     return PASTEL_RED
 
+def display_character_row(character, correct_answer, is_answer_row=False):
+    """Displays a single row in the guess grid for a given character."""
+    headers = ["Name", "Gender", "Category", "Status", "Domain", "Symbol", "Roman Equivalent"]
+    cols = st.columns(len(headers))
+    attributes = {
+        "Name": character["name"],
+        "Gender": character["gender"],
+        "Category": character["category"],
+        "Status": character["status"],
+        "Domain": character["domain"],
+        "Symbol": character["symbol"],
+        "Roman Equivalent": character.get("roman_equivalent", "N/A")
+    }
+    correct_attributes = {
+        "Name": correct_answer["name"],
+        "Gender": correct_answer["gender"],
+        "Category": correct_answer["category"],
+        "Status": correct_answer["status"],
+        "Domain": correct_answer["domain"],
+        "Symbol": correct_answer["symbol"],
+        "Roman Equivalent": correct_answer.get("roman_equivalent", "N/A")
+    }
+
+    for i, header in enumerate(headers):
+        if is_answer_row:
+            color = PASTEL_GREEN
+        else:
+            is_partial = header in ["Domain", "Symbol"]
+            color = get_color_for_comparison(attributes[header], correct_attributes[header], partial_match_allowed=is_partial)
+
+        display_val = ", ".join(attributes[header]) if isinstance(attributes[header], list) else attributes[header]
+        cols[i].markdown(
+            f"""
+            <div style="background-color: {color}; color: #212121; padding: 10px; border-radius: 5px; text-align: center; height: 100%; margin-top: 5px;">
+                {display_val}
+            </div>
+            """, unsafe_allow_html=True
+        )
+
 def display_guesses_grid():
     """Displays the grid of past guesses with color-coded feedback."""
     if not st.session_state.guesses:
@@ -187,29 +227,17 @@ def display_guesses_grid():
 
     # Guesses
     for guess in reversed(st.session_state.guesses):
-        cols = st.columns(len(headers))
-        attributes = {
-            "Name": guess["name"], "Gender": guess["gender"], "Category": guess["category"],
-            "Status": guess["status"], "Domain": guess["domain"], "Symbol": guess["symbol"],
-            "Roman Equivalent": guess.get("roman_equivalent", "N/A")
-        }
-        correct_attributes = {
-            "Name": hero_of_the_day["name"], "Gender": hero_of_the_day["gender"], "Category": hero_of_the_day["category"],
-            "Status": hero_of_the_day["status"], "Domain": hero_of_the_day["domain"], "Symbol": hero_of_the_day["symbol"],
-            "Roman Equivalent": hero_of_the_day.get("roman_equivalent", "N/A")
-        }
+        display_character_row(guess, hero_of_the_day)
 
-        for i, header in enumerate(headers):
-            is_partial = header in ["Domain", "Symbol"]
-            color = get_color_for_comparison(attributes[header], correct_attributes[header], partial_match_allowed=is_partial)
-            display_val = ", ".join(attributes[header]) if isinstance(attributes[header], list) else attributes[header]
-            cols[i].markdown(
-                f"""
-                <div style="background-color: {color}; color: #212121; padding: 10px; border-radius: 5px; text-align: center; height: 100%; margin-top: 5px;">
-                    {display_val}
-                </div>
-                """, unsafe_allow_html=True
-            )
+    # If game is over and the player lost, show the answer
+    player_won = any(g['name'].lower() == hero_of_the_day['name'].lower() for g in st.session_state.guesses)
+    player_lost = st.session_state.game_over and not player_won
+
+    if player_lost:
+        st.markdown("<hr>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center; font-weight: bold;'>The correct character was:</p>", unsafe_allow_html=True)
+        display_character_row(hero_of_the_day, hero_of_the_day, is_answer_row=True)
+
     st.markdown("---")
 
 def display_bestiary():

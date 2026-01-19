@@ -79,32 +79,41 @@ def test_hero_of_the_day_is_consistent_for_same_day(mock_datetime):
     """Tests that the hero of the day is the same when called on the same date."""
     mock_datetime.now.return_value = datetime(2023, 1, 1, 10, 0, 0)
     hero1, _ = get_hero_of_the_day(MOCK_DATA)
+
     mock_datetime.now.return_value = datetime(2023, 1, 1, 14, 0, 0)
     hero2, _ = get_hero_of_the_day(MOCK_DATA)
+
     assert hero1 is not None
     assert hero1["name"] == hero2["name"]
+
+    # Verify against modulo logic
+    day_of_year = datetime(2023, 1, 1).timetuple().tm_yday
+    hero_index = day_of_year % len(MOCK_DATA)
+    assert hero1["name"] == MOCK_DATA[hero_index]["name"]
 
 @patch('app.datetime')
 def test_hero_of_the_day_changes_for_different_days(mock_datetime):
     """Tests that the hero of the day changes across different dates."""
+    # Day 1
     mock_datetime.now.return_value = datetime(2023, 1, 1)
     hero1, _ = get_hero_of_the_day(MOCK_DATA)
+
+    # Day 2
     mock_datetime.now.return_value = datetime(2023, 1, 2)
     hero2, _ = get_hero_of_the_day(MOCK_DATA)
+
     assert hero1 is not None
     assert hero2 is not None
+    assert hero1["name"] != hero2["name"]
 
-    import random
-    day1_seed = datetime(2023, 1, 1).timetuple().tm_yday
-    random.seed(day1_seed)
-    seeded_hero1 = random.choice(MOCK_DATA)
-    day2_seed = datetime(2023, 1, 2).timetuple().tm_yday
-    random.seed(day2_seed)
-    seeded_hero2 = random.choice(MOCK_DATA)
+    # Verify against modulo logic
+    day_of_year1 = datetime(2023, 1, 1).timetuple().tm_yday
+    hero_index1 = day_of_year1 % len(MOCK_DATA)
+    assert hero1["name"] == MOCK_DATA[hero_index1]["name"]
 
-    assert seeded_hero1['name'] == hero1['name']
-    assert seeded_hero2['name'] == hero2['name']
-    assert day1_seed != day2_seed
+    day_of_year2 = datetime(2023, 1, 2).timetuple().tm_yday
+    hero_index2 = day_of_year2 % len(MOCK_DATA)
+    assert hero2["name"] == MOCK_DATA[hero_index2]["name"]
 
 
 # --- Test for Data Loading ---
@@ -117,12 +126,13 @@ def test_data_loading():
     assert isinstance(data[0], dict)
     assert "name" in data[0]
 
-def test_play_again_logic():
-    """Tests that the 'Play Again' logic can select a new random hero."""
-    hero1, _ = get_hero_of_the_day(MOCK_DATA, new_game=True)
-    hero2, _ = get_hero_of_the_day(MOCK_DATA, new_game=True)
-    assert hero1 is not None
-    assert hero2 is not None
+def test_play_again_is_random():
+    """Tests that 'Play Again' logic is not deterministic."""
+    # This test is probabilistic, but with a small dataset, it's likely to catch
+    # if new_game=True becomes deterministic.
+    heroes = {get_hero_of_the_day(MOCK_DATA, new_game=True)[0]['name'] for _ in range(10)}
+    # If it's truly random, we expect more than one unique hero in 10 tries.
+    assert len(heroes) > 1
 
 # --- Test for Visualization Logic ---
 
