@@ -1,0 +1,282 @@
+[
+    {
+        "name": "Zeus",
+        "category": "God",
+        "domain": ["Sky", "Thunder", "Law", "Order", "Justice"],
+        "symbol": ["Thunderbolt", "Eagle", "Oak Tree"],
+        "status": "Olympian",
+        "gender": "Male",
+        "roman_equivalent": "Jupiter",
+        "parentage": "Cronus and Rhea"
+    },
+    {
+        "name": "Hera",
+        "category": "God",
+        "domain": ["Marriage", "Women", "Birth", "Heavens"],
+        "symbol": ["Pomegranate", "Peacock", "Diadem"],
+        "status": "Olympian",
+        "gender": "Female",
+        "roman_equivalent": "Juno",
+        "parentage": "Cronus and Rhea"
+    },
+    {
+        "name": "Poseidon",
+        "category": "God",
+        "domain": ["Sea", "Earthquakes", "Storms", "Horses"],
+        "symbol": ["Trident", "Dolphin", "Horse"],
+        "status": "Olympian",
+        "gender": "Male",
+        "roman_equivalent": "Neptune",
+        "parentage": "Cronus and Rhea"
+    },
+    {
+        "name": "Hades",
+        "category": "God",
+        "domain": ["Underworld", "Dead", "Wealth"],
+        "symbol": ["Cornucopia", "Scepter", "Cerberus"],
+        "status": "Chthonic",
+        "gender": "Male",
+        "roman_equivalent": "Pluto",
+        "parentage": "Cronus and Rhea"
+    },
+    {
+        "name": "Athena",
+        "category": "God",
+        "domain": ["Wisdom", "Warfare", "Handicrafts"],
+        "symbol": ["Owl", "Olive Tree", "Aegis"],
+        "status": "Olympian",
+        "gender": "Female",
+        "roman_equivalent": "Minerva",
+        "parentage": "Zeus"
+    },
+    {
+        "name": "Apollo",
+        "category": "God",
+        "domain": ["Sun", "Music", "Archery", "Prophecy", "Medicine"],
+        "symbol": ["Lyre", "Bow and Arrow", "Laurel Wreath"],
+        "status": "Olympian",
+        "gender": "Male",
+        "roman_equivalent": "Apollo",
+        "parentage": "Zeus and Leto"
+    },
+    {
+        "name": "Artemis",
+        "category": "God",
+        "domain": ["Moon", "Hunt", "Archery", "Wild Animals"],
+        "symbol": ["Bow and Arrow", "Cypress Tree", "Deer"],
+        "status": "Olympian",
+        "gender": "Female",
+        "roman_equivalent": "Diana",
+        "parentage": "Zeus and Leto"
+    },
+    {
+        "name": "Aphrodite",
+        "category": "God",
+        "domain": ["Love", "Beauty", "Pleasure", "Procreation"],
+        "symbol": ["Dove", "Rose", "Scallop Shell"],
+        "status": "Olympian",
+        "gender": "Female",
+        "roman_equivalent": "Venus",
+        "parentage": "Uranus"
+    },
+    {
+        "name": "Ares",
+        "category": "God",
+        "domain": ["War", "Violence", "Bloodlust"],
+        "symbol": ["Spear", "Helmet", "Vulture"],
+        "status": "Olympian",
+        "gender": "Male",
+        "roman_equivalent": "Mars",
+        "parentage": "Zeus and Hera"
+    },
+    {
+        "name": "Hephaestus",
+        "category": "God",
+        "domain": ["Fire", "Metalworking", "Sculpture"],
+        "symbol": ["Anvil", "Hammer", "Tongs"],
+        "status": "Olympian",
+        "gender": "Male",
+        "roman_equivalent": "Vulcan",
+        "parentage": "Hera"
+    },
+    {
+        "name": "Hermes",
+        "category": "God",
+        "domain": ["Trade", "Thieves", "Travelers", "Messengers"],
+        "symbol": ["Caduceus", "Winged Sandals", "Winged Helmet"],
+        "status": "Olympian",
+        "gender": "Male",
+        "roman_equivalent": "Mercury",
+        "parentage": "Zeus and Maia"
+    },
+    {
+        "name": "Dionysus",
+        "category": "God",
+        "domain": ["Wine", "Festivity", "Madness", "Theater"],
+        "symbol": ["Grapevine", "Thyrsus", "Panther"],
+        "status": "Olympian",
+        "gender": "Male",
+        "roman_equivalent": "Bacchus",
+        "parentage": "Zeus and Semele"
+    },
+    {
+        "name": "Demeter",
+        "category": "God",
+        "domain": ["Harvest", "Agriculture", "Seasons"],
+        "symbol": ["Cornucopia", "Wheat", "Torch"],
+        "status": "Olympian",
+        "gender": "Female",
+        "roman_equivalent": "Ceres",
+        "parentage": "Cronus and Rhea"
+    },
+    {
+        "name": "Heracles",
+        "category": "Hero",
+        "domain": ["Strength", "Bravery"],
+        "symbol": ["Lion Skin", "Club"],
+        "status": "Mortal",
+        "gender": "Male",
+        "roman_equivalent": "Hercules",
+        "parentage": "Zeus and Alcmene"
+    },
+    {
+        "name": "Perseus",
+        "category": "Hero",
+        "domain": ["Quest"],
+        "symbol": ["Medusa's Head", "Winged Sandals"],
+        "status": "Mortal",
+        "gender": "Male",
+        "roman_equivalent": null,
+        "parentage": "Zeus and Danae"
+    },
+    {
+        "name": "Theseus",
+        "category": "Hero",
+        "domain": ["Athens"],
+        "symbol": ["Labyrinth", "Minotaur"],
+        "status": "Mortal",
+        "gender": "Male",
+        "roman_equivalent": null,
+        "parentage": "Aegeus/Poseidon and Aethra"
+    },
+    {
+        "name": "Achilles",
+        "category": "Hero",
+        "domain": ["War"],
+        "symbol": ["Armor", "Heel"],
+        "status": "Mortal",
+        "gender": "Male",
+        "roman_equivalent": null,
+        "parentage": "Peleus and Thetis"
+    },
+    {
+        "name": "Odysseus",
+        "category": "Hero",
+        "domain": ["Cunning", "Journey"],
+        "symbol": ["Bow", "Cyclops"],
+        "status": "Mortal",
+        "gender": "Male",
+        "roman_equivalent": "Ulysses",
+        "parentage": "Laertes and Anticlea"
+    },
+    {
+        "name": "Jason",
+        "category": "Hero",
+        "domain": ["Quest", "Leadership"],
+        "symbol": ["Golden Fleece", "Argo"],
+        "status": "Mortal",
+        "gender": "Male",
+        "roman_equivalent": null,
+        "parentage": "Aeson and Alcimede"
+    },
+    {
+        "name": "Icarus",
+        "category": "Mortal",
+        "domain": ["Flight", "Hubris"],
+        "symbol": ["Wax Wings"],
+        "status": "Mortal",
+        "gender": "Male",
+        "roman_equivalent": null,
+        "parentage": "Daedalus"
+    },
+    {
+        "name": "Cronus",
+        "category": "Titan",
+        "domain": ["Time", "Harvest"],
+        "symbol": ["Scythe"],
+        "status": "Titan",
+        "gender": "Male",
+        "roman_equivalent": "Saturn",
+        "parentage": "Uranus and Gaia"
+    },
+    {
+        "name": "Rhea",
+        "category": "Titan",
+        "domain": ["Motherhood", "Fertility"],
+        "symbol": ["Lion", "Turret Crown"],
+        "status": "Titan",
+        "gender": "Female",
+        "roman_equivalent": "Ops",
+        "parentage": "Uranus and Gaia"
+    },
+    {
+        "name": "Prometheus",
+        "category": "Titan",
+        "domain": ["Forethought", "Fire", "Mankind"],
+        "symbol": ["Fire", "Eagle"],
+        "status": "Titan",
+        "gender": "Male",
+        "roman_equivalent": null,
+        "parentage": "Iapetus and Clymene"
+    },
+    {
+        "name": "Medusa",
+        "category": "Monster",
+        "domain": ["Gaze"],
+        "symbol": ["Snakes for hair"],
+        "status": "Chthonic",
+        "gender": "Female",
+        "roman_equivalent": null,
+        "parentage": "Phorcys and Ceto"
+    },
+    {
+        "name": "Minotaur",
+        "category": "Monster",
+        "domain": ["Labyrinth"],
+        "symbol": ["Bull's Head"],
+        "status": "Chthonic",
+        "gender": "Male",
+        "roman_equivalent": null,
+        "parentage": "Pasiphae and the Cretan Bull"
+    },
+    {
+        "name": "Cerberus",
+        "category": "Monster",
+        "domain": ["Underworld"],
+        "symbol": ["Three heads"],
+        "status": "Chthonic",
+        "gender": "Male",
+        "roman_equivalent": null,
+        "parentage": "Typhon and Echidna"
+    },
+    {
+        "name": "Scylla",
+        "category": "Monster",
+        "domain": ["Sea"],
+        "symbol": ["Twelve feet", "Six heads"],
+        "status": "Chthonic",
+        "gender": "Female",
+        "roman_equivalent": null,
+        "parentage": "Phorcys and Ceto"
+    },
+    {
+        "name": "Charybdis",
+        "category": "Monster",
+        "domain": ["Sea", "Whirlpool"],
+        "symbol": ["Whirlpool"],
+        "status": "Chthonic",
+        "gender": "Female",
+        "roman_equivalent": null,
+        "parentage": "Poseidon and Gaia"
+    }
+]
